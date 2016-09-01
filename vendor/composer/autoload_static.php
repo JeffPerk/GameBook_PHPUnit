@@ -18,7 +18,14 @@ class ComposerStaticInit31658f273ca60e759590358b61bb75eb
         'S' => 
         array (
             'Symfony\\Component\\Yaml\\' => 23,
-            'Src\\' => 4,
+        ),
+        'R' => 
+        array (
+            'Repository\\' => 11,
+        ),
+        'E' => 
+        array (
+            'Entity\\' => 7,
         ),
         'D' => 
         array (
@@ -42,9 +49,13 @@ class ComposerStaticInit31658f273ca60e759590358b61bb75eb
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
         ),
-        'Src\\' => 
+        'Repository\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/Src',
+            0 => __DIR__ . '/../..' . '/src/Repository',
+        ),
+        'Entity\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Entity',
         ),
         'Doctrine\\Instantiator\\' => 
         array (
