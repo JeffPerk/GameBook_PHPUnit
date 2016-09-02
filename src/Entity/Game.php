@@ -4,7 +4,26 @@
   class Game {
     protected $title;
     protected $imagePath;
-    protected $rating;
+    protected $ratings;
+
+    public function getAverageScore() {
+      $ratings = $this->getRatings();
+      $numRatings = count($ratings);
+
+      if ($numRatings === 0) {
+        return null;
+      }
+
+      $total = 0;
+      foreach ($ratings as $rating) {
+        $total += $rating->getScore();
+      }
+      return $total / $numRatings;
+    }
+
+    public function isRecommended() {
+      return $this->getAverageScore() >= 3 ? true : 'This is false';
+    }
 
     public function getTitle() {
      	return $this->title;
@@ -15,6 +34,9 @@
     }
 
     public function getImagePath() {
+      if ($this->imagePath == null) {
+        return '/images/placeholder.jpg';
+      }
      	return $this->imagePath;
     }
 
@@ -22,11 +44,11 @@
      	$this->imagePath = $value;
     }
 
-    public function getRating() {
-     	return $this->rating;
+    public function getRatings() {
+     	return $this->ratings;
     }
 
-    public function setRating($value) {
-     	$this->rating = $value;
+    public function setRatings($value) {
+     	$this->ratings = $value;
     }
   }
