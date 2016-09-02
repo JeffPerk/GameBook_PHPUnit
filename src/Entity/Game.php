@@ -22,7 +22,7 @@
     }
 
     public function isRecommended() {
-      return $this->getAverageScore() >= 3 ? true : 'This is false';
+      return $this->getAverageScore() >= 3;
     }
 
     public function getTitle() {
