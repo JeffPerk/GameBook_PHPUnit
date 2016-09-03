@@ -18,13 +18,15 @@
 
 
     public function testImage_WithNull_ReturnPlaceholder() {
-      $game = new Game();
+      // $game = new Game();
+      $game = \Mockery::mock(new Game);
       $game->setImagePath(null);
       $this->assertEquals('/images/placeholder.jpg', $game->getImagePath());
     }
 
     public function testImage_WithPath_ReturnsPath() {
-      $game = new Game();
+      // $game = new Game();
+      $game = \Mockery::mock(new Game);
      	$game->setImagePath('/images/game.jpg');
       $this->assertEquals('/images/game.jpg', $game->getImagePath());
     }
@@ -33,13 +35,12 @@
       $mock = \Mockery::mock('Entity\Game[getAverageScore]');
       $mock->shouldReceive('getAverageScore')->once()->andReturn(5);
 
-      // $game = new Game($mock);
       $this->assertTrue($mock->isRecommended());
     }
 
     public function testAverageScore_WithoutRatings_ReturnsNull() {
-      $game = new Game();
-     	$game->setRatings([]);
+      $game = \Mockery::mock('Entity\Game[setRatings]');
+      $game->shouldReceive('setRatings')->with([]);
       $this->assertNull($game->getAverageScore());
     }
 
@@ -51,11 +52,8 @@
       $rating2Mock->shouldReceive('getScore')->andReturn(8);
 
      	$mock = \Mockery::mock('Entity\Game[getRatings]');
-      $mock->shouldReceive('getRatings')->once()->andReturn($rating1Mock, $rating2Mock);
+      $mock->shouldReceive('getRatings')->once()->andReturn([$rating1Mock, $rating2Mock]); //Since getAverageScore uses a foreach loop, andReturn should be an array
 
-      // $game = new Game($mock, $rating1Mock);
-
-      // $output = $game->getAverageScore();
       $this->assertEquals(7, $mock->getAverageScore());
     }
   }
