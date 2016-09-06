@@ -4,14 +4,6 @@
 
   class GameTest extends \PHPUnit_Framework_TestCase {
 
-    // public function setUp() {
-    //  	$this->instance = new Game();
-    // }
-
-    // public function tearDown() {
-    //  	unset($this->instance);
-    // }
-
     protected function tearDown() {
       \Mockery::close();
     }
