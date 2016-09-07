@@ -9,7 +9,7 @@
         $game = new Game();
         $game->setTitle("Game " . $i);
         $game->setImagePath('images/game.jpg');
-        $game->setRating(4.5);
+        $game->setRatings(4.5);
         $games[] = $game;
       }
       return $games;
